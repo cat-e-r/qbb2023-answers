@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,7 +17,7 @@ print( "data: ", data[0:5, 0:5] )
 
 # Find row with transcript of interest
 for i in range(len(transcripts)):
-    if transcripts[i] == 'FBtr0331261':
+    if transcripts[i] == 'FBtr0073461':
         row = i
 
 # Find columns with samples of interest
@@ -35,7 +35,7 @@ y = expression
 
 # Plot data
 fig, ax = plt.subplots()
-ax.set_title( "FBtr0331261" )
+ax.set_title( "FBtr0073461" )
 ax.plot( x, y )
-fig.savefig( "FBtr0331261.png" )
+fig.savefig( "FBtr0073461.png" )
 plt.close( fig )
