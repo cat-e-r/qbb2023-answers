@@ -34,18 +34,22 @@ f_expression = data[row, f_cols]
 m_expression = data[row, m_cols]
 
 # Prepare data
-x = samples[f_cols]
+#x = samples[f_cols]
 y_f = f_expression
 y_m = m_expression
 y_2m = 2 * np.array(m_expression)
 
+x = ['10', '11', '12', '14', '14A', '14B', '14C', '14D']
+
 # Plot data
 fig, ax = plt.subplots()
-ax.set_title( "FBtr0073461" )
-ax.plot( x, y_f )
-ax.plot(x, y_m)
-ax.plot(x, y_2m)
-ax.set_xlabel("Sample Number")
+ax.set_title( "sisA" )
+ax.plot(x, y_f, c = "red")
+ax.plot(x, y_m, c = "blue")
+ax.plot(x, y_2m, c = "cyan")
+ax.set_xlabel("Developmental Stage")
 ax.set_ylabel("mRNA Abundance (RPKM)")
 fig.savefig( "FBtr0073461.png" )
+plt.tight_layout()
+plt.show()
 plt.close( fig )
