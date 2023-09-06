@@ -37,12 +37,14 @@ m_expression = data[row, m_cols]
 x = samples[f_cols]
 y_f = f_expression
 y_m = m_expression
+y_2m = 2 * np.array(m_expression)
 
 # Plot data
 fig, ax = plt.subplots()
 ax.set_title( "FBtr0073461" )
 ax.plot( x, y_f )
 ax.plot(x, y_m)
+ax.plot(x, y_2m)
 ax.set_xlabel("Sample Number")
 ax.set_ylabel("mRNA Abundance (RPKM)")
 fig.savefig( "FBtr0073461.png" )
