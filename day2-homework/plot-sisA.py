@@ -21,21 +21,29 @@ for i in range(len(transcripts)):
         row = i
 
 # Find columns with samples of interest
-cols = []
+f_cols = []
+m_cols = []
 for i in range(len(samples)):
     if "female" in samples[i]:
-        cols.append(i)
+        f_cols.append(i)
+    elif "male" in samples[i]:
+        m_cols.append(i)
 
 # Subset data of interest
-expression = data[row, cols]
+f_expression = data[row, f_cols]
+m_expression = data[row, m_cols]
 
 # Prepare data
-x = samples[cols]
-y = expression
+x = samples[f_cols]
+y_f = f_expression
+y_m = m_expression
 
 # Plot data
 fig, ax = plt.subplots()
 ax.set_title( "FBtr0073461" )
-ax.plot( x, y )
+ax.plot( x, y_f )
+ax.plot(x, y_m)
+ax.set_xlabel("Sample Number")
+ax.set_ylabel("mRNA Abundance (RPKM)")
 fig.savefig( "FBtr0073461.png" )
 plt.close( fig )
