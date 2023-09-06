@@ -6,8 +6,39 @@ import matplotlib.pyplot as plt
 # Get dataset to recreate Fig 3B from Lott et al 2011 PLoS Biology https://pubmed.gov/21346796
 # wget https://github.com/bxlab/cmdb-quantbio/raw/main/assignments/lab/bulk_RNA-seq/extra_data/all_annotated.csv
 
-transcripts = np.loadtxt( "all_annotated.csv", delimiter=",", usecols=0, dtype="<U30", skiprows=1 )
-print( "transcripts: ", transcripts[0:5] )
+f = open("all_annotated.csv", "r")
+transcripts = f.readlines()
+
+index = 0 #start a variable to iterate throgh and modify the items WITHIN the existing list
+
+transcript_names = []
+
+data_vals = []
+for transcript in transcripts[1:]:
+    transcript = transcript.rstrip() #gets rid of \n at the end of the patient string and stores it as the new patient
+    transcript = transcript.split(",") #splits the string at the commas and stores it as the new patient
+    transcript_names.append(transcript[0])
+    #sample_names.append(transcript[1])
+   # print(transcripts)
+
+#print(transcript_names)
+#print(transcript_names[0])
+#print(transcript_names[1])
+
+sample_names = []
+samples = transcripts[0]
+#print(samples)
+samples = samples.rstrip() #gets rid of \n at the end of the patient string and stores it as the new patient
+samples = samples.split(",")
+
+for sample in samples[2:]:
+    sample_names.append(sample)
+print(sample_names)
+
+
+
+#transcripts = np.loadtxt( "all_annotated.csv", delimiter=",", usecols=0, dtype="<U30", skiprows=1 )
+#print( "transcripts: ", transcripts[0:5] )
 
 samples = np.loadtxt( "all_annotated.csv", delimiter=",", max_rows=1, dtype="<U30" )[2:]
 print( "samples: ", samples[0:5] )
@@ -16,8 +47,8 @@ data = np.loadtxt( "all_annotated.csv", delimiter=",", dtype=np.float32, skiprow
 print( "data: ", data[0:5, 0:5] )
 
 # Find row with transcript of interest
-for i in range(len(transcripts)):
-    if transcripts[i] == 'FBtr0073461':
+for i in range(len(transcript_names)):
+    if transcript_names[i] == 'FBtr0073461':
         row = i
 
 # Find columns with samples of interest
