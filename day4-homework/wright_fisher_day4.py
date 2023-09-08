@@ -45,31 +45,50 @@ def my_wf_model(freq, pop):
 
 #plot allele frequency over time throughout you simulation
 
-
-
-fig, (ax1, ax2) = plt.subplots(2)
-ax1.set_title( "Allele Frequency Over Generations")
-ax1.set_xlabel("Generation")
-ax1.set_ylabel("Allele Frequency")
-
+avgs_dictionary = {}
+pop_sizes = [60, 78, 88, 100, 300]
 gens_to_fix = []
-for iteration in range(1500):
-    result = my_wf_model(0.5, 150)
-    x = result[0]
-    y = result[1]
-    ax1.plot(x, y)
-    gens_to_fix.append(len(result[0]))
+avg_gens_to_fix = []
+for i in pop_sizes:
+    for n in range(50):
+        gens_num = len(my_wf_model(0.4, i)[0])
 
-ax2.set_title("Histogram of Generations to Fixation")
-ax2.set_xlabel("Gnerations to Fixation")
-ax2.set_ylabel("Occurances")
-ax2.hist(gens_to_fix)
+        gens_to_fix.append(gens_num)
+
+    avgs_dictionary[i] = np.average(gens_to_fix)
+    avg_gens_to_fix.append(avgs_dictionary[i])
+print(avg_gens_to_fix)
+
+fig, ax = plt.subplots()
+ax.set_title( "Average Generations To Fixation with Increasing Population")
+ax.set_xlabel("Population Size")
+ax.set_ylabel("Generations to Fixation")
 
 
-
+ax.plot(pop_sizes, avg_gens_to_fix, c = "teal")
 plt.tight_layout()
-figure = fig.savefig( "with_hist_WF_allele_freq_generations.png")
+figure = fig.savefig( "gens_to_fixation_vs_population_size.png")
 plt.show()
+
+
+# gens_to_fix = []
+# for iteration in range(1500):
+#     result = my_wf_model(0.5, 150)
+#     x = result[0]
+#     y = result[1]
+#     ax1.plot(x, y)
+#     gens_to_fix.append(len(result[0]))
+
+# ax2.set_title("Histogram of Generations to Fixation")
+# ax2.set_xlabel("Gnerations to Fixation")
+# ax2.set_ylabel("Occurances")
+# ax2.hist(gens_to_fix)
+
+
+
+# plt.tight_layout()
+# figure = fig.savefig( "with_hist_WF_allele_freq_generations.png")
+# plt.show()
 
 
 
