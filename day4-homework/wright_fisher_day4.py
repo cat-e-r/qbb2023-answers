@@ -46,12 +46,12 @@ def my_wf_model(freq, pop):
 #plot allele frequency over time throughout you simulation
 
 avgs_dictionary = {}
-pop_sizes = [60, 78, 88, 100, 300]
+freqs = [0.1, 0.3, 0.5, 0.8, 0.9]
 gens_to_fix = []
 avg_gens_to_fix = []
-for i in pop_sizes:
+for i in freqs:
     for n in range(50):
-        gens_num = len(my_wf_model(0.4, i)[0])
+        gens_num = len(my_wf_model(i, 1000)[1])
 
         gens_to_fix.append(gens_num)
 
@@ -60,14 +60,14 @@ for i in pop_sizes:
 print(avg_gens_to_fix)
 
 fig, ax = plt.subplots()
-ax.set_title( "Average Generations To Fixation with Increasing Population")
-ax.set_xlabel("Population Size")
+ax.set_title( "Average Generations To Fixation with Increasing Frequency")
+ax.set_xlabel("Frequency")
 ax.set_ylabel("Generations to Fixation")
 
 
-ax.plot(pop_sizes, avg_gens_to_fix, c = "teal")
+ax.plot(freqs, avg_gens_to_fix, c = "teal")
 plt.tight_layout()
-figure = fig.savefig( "gens_to_fixation_vs_population_size.png")
+figure = fig.savefig( "gens_to_fixation_vs_allele_freq.png")
 plt.show()
 
 
