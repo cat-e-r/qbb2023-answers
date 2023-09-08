@@ -47,18 +47,28 @@ def my_wf_model(freq, pop):
 
 
 
-fig, ax = plt.subplots()
-ax.set_title( "Allele Frequency Over Generations")
-ax.set_xlabel("Generation")
-ax.set_ylabel("Allele Frequency")
+fig, (ax1, ax2) = plt.subplots(2)
+ax1.set_title( "Allele Frequency Over Generations")
+ax1.set_xlabel("Generation")
+ax1.set_ylabel("Allele Frequency")
 
-for iteration in range(30):
-    result = my_wf_model(0.5, 40)
+gens_to_fix = []
+for iteration in range(1500):
+    result = my_wf_model(0.5, 150)
     x = result[0]
     y = result[1]
-    ax.plot(x, y)
+    ax1.plot(x, y)
+    gens_to_fix.append(len(result[0]))
+
+ax2.set_title("Histogram of Generations to Fixation")
+ax2.set_xlabel("Gnerations to Fixation")
+ax2.set_ylabel("Occurances")
+ax2.hist(gens_to_fix)
+
+
+
 plt.tight_layout()
-figure = fig.savefig( "30_WF_allele_freq_generations.png")
+figure = fig.savefig( "with_hist_WF_allele_freq_generations.png")
 plt.show()
 
 
