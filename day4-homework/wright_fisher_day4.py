@@ -29,34 +29,37 @@ def my_wf_model(freq, pop):
         successes = np.random.binomial(2*pop, freq)
         freq = successes/(2*pop)
         allele_freq.append(freq)
-    return(allele_freq)
-
-
-result = my_wf_model(0.5, 10)
-print("allele_frequencies ", result)
-num_gens = len(result)
-print("number_gens ", num_gens)
-
-#plot allele frequency over time throughout you simulation
-gens = []
-count = 0
-for i in range(num_gens):
+    gens = []
+    num_gens = len(allele_freq)
+    count = 0
+    for i in range(num_gens):
         count += 1
         gens.append(count)
+    return[gens, allele_freq]
 
 
-x = gens
-y = result
+
+# print("allele_frequencies ", result)
+# num_gens = len(result)
+# print("number_gens ", num_gens)
+
+#plot allele frequency over time throughout you simulation
+
+
 
 fig, ax = plt.subplots()
 ax.set_title( "Allele Frequency Over Generations")
-ax.plot(x, y, c = "pink")
 ax.set_xlabel("Generation")
 ax.set_ylabel("Allele Frequency")
-plt.tight_layout()
-figure = fig.savefig( "WF_allele_freq_generations.png")
-plt.show()
 
+for iteration in range(30):
+    result = my_wf_model(0.5, 40)
+    x = result[0]
+    y = result[1]
+    ax.plot(x, y)
+plt.tight_layout()
+figure = fig.savefig( "30_WF_allele_freq_generations.png")
+plt.show()
 
 
 
