@@ -1,0 +1,7 @@
+#Average number of generations to fixation increases with increasing population size, which makes sense because with more alleles (more people in general) there is likely to be more variation meaning it would take longer for a convergence to happen.
+
+#Average number of generations to fixation increases as the allele frequency reaches the extremes (zero and one), because with less variation among the population (allele occurs almost always or never) the allele will converge more quickly.
+
+#The wright-fisher model assumes there are only two alleles, more different alleles would make it take even longer to reach fixation. In nature, there are sometimes (often?) more than two alleles of a gene, making more genetic diversity which seems to help us as humans survive.
+
+
