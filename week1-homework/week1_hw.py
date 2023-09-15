@@ -47,10 +47,15 @@ for pbid in pat_pro_id:
     my_dictionary[pbid][1] += 1
 
 
-print(my_dictionary)
+#print(my_dictionary)
 
+my_dictionary_DF = pd.DataFrame.from_dict(my_dictionary, orient = 'index', columns = ['maternal_dnm', 'paternal_dnm'])
 
+par_data = pd.read_csv('aau1043_parental_age.csv', index_col = 'Proband_id')
 
+total_data = pd.concat([my_dictionary_DF, par_data], axis = 1, join = 'inner')
+
+print(total_data)
 
 
 
