@@ -50,3 +50,28 @@ simulate_coverage(30, 1_000_000, 100, 'ex1_30x_cov.png')
 
 # EXERCISE 2 ----------------------------------------------------
 
+reads = ['ATTCA', 'ATTGA', 'CATTG', 'CTTAT', 'GATTG', 'TATTT', 'TCATT', 'TCTTA', 'TGATT', 'TTATT', 'TTCAT', 'TTCTT', 'TTGAT']
+
+graph = set()
+
+def edges(k, sequence):
+
+    for read in reads:
+        for i in range(len(read) - k - 1):
+            kmer1 = read[i: i+k]
+            kmer2 = read[i+1: i+1+k]
+            graph.add(f'{kmer1} -> {kmer2}')
+    
+    f = open('edges.txt', 'w')
+
+    for edge in graph:
+        f.write(edge + '\n')
+
+edges(k = 3, sequence = reads)
+
+# Step 2.2 - done
+
+
+
+
+
