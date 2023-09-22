@@ -64,12 +64,17 @@ def edges(k, sequence):
     
     f = open('edges.txt', 'w')
 
+    f.write('digraph {')
     for edge in graph:
         f.write(edge + '\n')
+    f.write('}')
 
 edges(k = 3, sequence = reads)
 
 # Step 2.2 - done
+
+# Step 2.3
+
 
 
 
