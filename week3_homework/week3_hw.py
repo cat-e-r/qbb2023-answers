@@ -53,17 +53,50 @@ for i in range(1, F_matrix.shape[0]):
         else:
             tb_matrix[i,j] = 'v'
 
-print(F_matrix)
-print(tb_matrix)
+#print(F_matrix)
+#print(tb_matrix)
 
 
-# # While loops to keep track
+#i and j already starting from bottom right since we ended at F_matrix.shape[0]
+#initialize an empty string
+align_seq1 = ''
+align_seq2 = ''
+gaps_in_seq1 = 0
+gaps_in_seq2 = 0
+#i = F_matrix.shape[0] - 1
+#j = F_matrix.shape[1] - 1
+while i != 0 or j != 0:
+    if tb_matrix[i,j] == 'd':
+        align_seq1 = sq1[i-1] + align_seq1 
+        align_seq2 = sq2[j-1] + align_seq2 
+        i -= 1
+        j -= 1
+    elif tb_matrix[i,j] == 'h':
+        align_seq1 = '-' + align_seq1
+        align_seq2 = sq2[j-1] + align_seq2 
+        j -= 1
+        gaps_in_seq1 += 1
+    elif tb_matrix[i,j] == 'v':
+        align_seq1 = sq1[i-1] + align_seq1
+        align_seq2 = '-' + align_seq2
+        i -= 1
+        gaps_in_seq2 += 1
 
-# for i in range(0, 10):
-#     print(i)
+alignment_score = F_matrix[F_matrix.shape[0]-1, F_matrix.shape[1]-1]
 
-# i = 9
-# while i >= 0:
-#     print(i)
-#     i -= 1
+file = sys.argv[4]
+
+f = open(file, "w")
+f.write('seq 1: ' + align_seq1 + '\n' 
+    + 'seq 2: ' + align_seq2 + '\n' 
+    + 'Number of Gaps in seq 1: ' + str(gaps_in_seq1) + '\n' 
+    + 'Number of Gaps in seq 2: ' + str(gaps_in_seq2) + '\n' 
+    + 'Alignment score: ' + str(alignment_score))
+
+print('seq 1: ' + align_seq1 + '\n' 
+    + 'seq 2: ' + align_seq2 + '\n' 
+    + 'Number of Gaps in seq 1: ' + str(gaps_in_seq1) + '\n' 
+    + 'Number of Gaps in seq 2: ' + str(gaps_in_seq2) + '\n' 
+    + 'Alignment score: ' + str(alignment_score))
+
 
