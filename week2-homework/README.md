@@ -16,7 +16,7 @@ Step 1.5
 Both poisson and normal distributions fit well.
 
 Step 2.5
-TTA TAT ATT TTC TCA CAT ATT TTG TGA GAT ATT TTC TCT CTT
+TTATTCATTGATTCTT
 
 Step 2.6
 How many times is each trimer repeated?
