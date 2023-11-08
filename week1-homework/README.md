@@ -1,6 +1,6 @@
 EXERCISE 2.2
 What is the “size” of this relationship? In your own words, what does this mean? Does this match what you observed in your plots in step 2.1?
-    As age increases by one year the mother passes on 0.3776 times as many de novo mutations. This matches what I observed in step 2.1 where with the mother's age de novo mutations increased, but not super quickly.
+    As age increases by one year the mother passes on 0.3776 more de novo mutations. This matches what I observed in step 2.1 where with the mother's age de novo mutations increased, but not super quickly.
 
 
 Is this relationship significant? How do you know?
@@ -8,7 +8,7 @@ Is this relationship significant? How do you know?
 
 EXERCISE 2.3
 What is the “size” of this relationship? In your own words, what does this mean? Does this match what you observed in your plots in step 2.1?
-    As age increases by one year the father passes on 1.35 times as many de novo mutations. This matches what I observed in step 2.1 where with the father's age de novo mutations increase more quickly than in the case of the mother's age.
+    As age increases by one year the father passes on 1.35 more de novo mutations. This matches what I observed in step 2.1 where with the father's age de novo mutations increase more quickly than in the case of the mother's age.
 
 
 Is this relationship significant? How do you know?
