@@ -7,13 +7,13 @@ import numpy as np
 baitmap, washtxt, output = sys.argv[1:4]
 
 f = open(output, 'w')
-f.write('track type=interact name="pCHIC" description="Chromatin interactions" useScore=on maxHeightPixels=200:100:50 visibility=full')
+f.write('track type=interact name="pCHIC" description="Chromatin interactions" useScore=on maxHeightPixels=200:100:50 visibility=full\n')
 
 
 baits = pd.read_table(baitmap, delim_whitespace = True, header = None, names = ['chrom', 'start', 'end', 'ref_num', 'gene'])
 baits['id'] = 'chr' + baits['chrom'].astype(str) + ',' + baits['start'].astype(str) + ',' + baits['end'].astype(str)
 baits.index = baits['id']
-print(baits)
+#print(baits)
 
 ucsc_data = []
 max_val = None
@@ -69,12 +69,18 @@ with open(washtxt, 'r') as file:
 
 
 for interaction in ucsc_data:
-    score = (interaction[5]/max_val)*1000
+    score = int((interaction[5]/max_val)*1000)
     interaction[4] = score
     f.write('\t'.join([str(x) for x in interaction]) + '\n')
 
-second_read =  pd.read_table(output, delim_whitespace = True)
-#sort second_read[4]
+second_read =  pd.read_table(output, delim_whitespace = True, skiprows = 1, header=None)
+sorted_read = second_read.sort_values(by = second_read.columns[4])
+#print(second_read[second_read.columns[4]])
+#print(sorted_read[sorted_read.columns[4]])
+
+
+sorted_read.iloc[0:6, :].to_csv('top_6.txt', header = None, index = None, sep = '\t')
+
         
 
 
