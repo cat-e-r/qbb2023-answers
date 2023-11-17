@@ -15,8 +15,11 @@ Step 1.5
 0.003% of the genome has not been sequenced.
 Both poisson and normal distributions fit well.
 
+Step 2.4
+dot -Tpng edges.txt > ex2_digraph.png
+
 Step 2.5
-TTATTCATTGATTCTT
+TTCATTGATTCTTATTT
 
 Step 2.6
 How many times is each trimer repeated?
