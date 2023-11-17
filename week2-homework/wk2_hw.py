@@ -57,7 +57,7 @@ graph = set()
 def edges(k, sequence):
 
     for read in reads:
-        for i in range(len(read) - k ):
+        for i in range(len(read) - k):
             kmer1 = read[i: i+k]
             kmer2 = read[i+1: i+1+k]
             graph.add(f'{kmer1} -> {kmer2}')
