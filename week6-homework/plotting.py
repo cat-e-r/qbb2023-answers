@@ -68,45 +68,45 @@ axs[1].legend()
 plt.tight_layout()
 fig3.savefig("Manhattans.png")
 
-# fig4, ax4 = plt.subplots()
-# maxP = np.max(gwas_G['-log10_P'])
-# rowID = gwas_G[gwas_G['-log10_P'] == maxP]
-# snpID = rowID.loc[:,'SNP'].values[0]
+fig4, ax4 = plt.subplots()
+maxP = np.max(gwas_G['-log10_P'])
+rowID = gwas_G[gwas_G['-log10_P'] == maxP]
+snpID = rowID.loc[:,'SNP'].values[0]
 
-# maxP2 = np.max(gwas_C['-log10_P'])
-# rowID2 = gwas_C[gwas_C['-log10_P'] == maxP2]
-# snpID2 = rowID2.loc[:,'SNP'].values[0]
+maxP2 = np.max(gwas_C['-log10_P'])
+rowID2 = gwas_C[gwas_C['-log10_P'] == maxP2]
+snpID2 = rowID2.loc[:,'SNP'].values[0]
 
-# GT_vcf = pd.read_csv('genotypes.vcf', delimiter = '\t', skiprows = 27)
-# GOI = GT_vcf[GT_vcf['ID']==snpID]
+GT_vcf = pd.read_csv('genotypes.vcf', delimiter = '\t', skiprows = 27)
+GOI = GT_vcf[GT_vcf['ID']==snpID]
 
-# POI = pd.read_csv('GS451_IC50.txt', delim_whitespace = True)
+POI = pd.read_csv('GS451_IC50.txt', delim_whitespace = True)
 
-# wt = []
-# het = []
-# hom = []
+wt = []
+het = []
+hom = []
 
-# plt_me = [wt, het, hom]
+plt_me = [wt, het, hom]
 
-# for i in range(len(GOI.values[0])):
-#     if GOI.values[0][i]== '0/0':
-#        wt.append(POI.iloc[i-7,2])
-#     if GOI.values[0][i]== '0/1':
-#        het.append(POI.iloc[i-7,2])
-#     if GOI.values[0][i]== '1/1':
-#        hom.append(POI.iloc[i-7,2])
+for i in range(len(GOI.values[0])):
+    if GOI.values[0][i]== '0/0':
+       wt.append(POI.iloc[i-9,2])
+    if GOI.values[0][i]== '0/1':
+       het.append(POI.iloc[i-9,2])
+    if GOI.values[0][i]== '1/1':
+       hom.append(POI.iloc[i-9,2])
 
-# for i in range(len(plt_me)):
-#     plt_me[i] = [x for x in plt_me[i] if str(x) != 'nan']
+for i in range(len(plt_me)):
+    plt_me[i] = [x for x in plt_me[i] if str(x) != 'nan']
 
-# ax4.boxplot(plt_me)
-# ax4.set_title( "Genotypes and their phenotypes")
-# ax4.set_xlabel('Genoype')
-# ax4.set_ylabel('Phenotype')
-# plt.savefig("Boxplot.png")
+ax4.boxplot(plt_me)
+ax4.set_title( "Genotypes and their phenotypes")
+ax4.set_xlabel('Genoype')
+ax4.set_ylabel('Phenotype')
+plt.savefig("Boxplot.png")
 
-# print(snpID)
-# print(snpID2)
+print(snpID)
+print(snpID2)
 
 
 
