@@ -1,0 +1,1 @@
+Ex 2 Percent overlap: 21.664355062413314%
