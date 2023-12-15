@@ -107,3 +107,21 @@ adata.write('filtered_clustered_data.h5')
 
 adata = sc.read_h5ad("filtered_clustered_data.h5")
 adata.uns['log1p']['base'] = None # This is needed due to a bug in scanpy 
+
+marker_genes = ['MS4A1', 'LYZ', 'GNLY']
+
+sc.pl.umap(adata, color= marker_genes, title = ["MS4A1 UMAP", "LYZ UMAP", "GNLY UMAP"], show = False)
+plt.tight_layout()
+plt.savefig("gene_marker_clusters.png")
+
+adata.rename_categories('leiden', ['0', 'Myeloid Cells', 'B-cell', '3', '4', 'NK Cells', '6', '7'])
+
+sc.pl.umap(adata, color='leiden', title = "UMAP Plot", show = False)
+plt.tight_layout()
+plt.savefig("label_umap_clusters.png")
+
+
+
+
+
+
